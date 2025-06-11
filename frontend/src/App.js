@@ -16,7 +16,8 @@ export const App = {
                     id: "titleLabel",
                     label: "User Preferences",
                     inputWidth: 200,
-                    attributes: { "aria-label": "Application Title" } },
+                    attributes: { "aria-label": "Application Title" }
+                },
                 {
                     view: "button",
                     id: "logoutBtn",
@@ -25,11 +26,18 @@ export const App = {
                     hidden: true,
                     css: "webix_danger",
                     click: () => {
+                        console.log('Logout clicked, switching to loginView');
                         localStorage.removeItem('access_token');
                         localStorage.removeItem('refresh_token');
-                        webix.$$("mainView").setValue("login");
-                        webix.$$("logoutBtn").hide();
-                        webix.message("Logged out successfully");
+                        const mainView = webix.$$("mainView");
+                        if (mainView) {
+                            mainView.setValue("loginView");
+                            webix.$$("logoutBtn").hide();
+                            webix.message("Logged out successfully");
+                        } else {
+                            console.error('mainView not found during logout');
+                            webix.message({ type: "error", text: "Logout failed: UI not initialized" });
+                        }
                     },
                     attributes: { "aria-label": "Logout Button" }
                 }
@@ -59,4 +67,3 @@ export const App = {
         }
     }
 };
-
