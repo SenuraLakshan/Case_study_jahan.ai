@@ -28,10 +28,11 @@ describe('User Preferences Page', () => {
         }).as('updatePreferences');
 
         cy.visit('/');
-        cy.wait(5000);
+        cy.wait(2000);
         cy.waitForWebix();
         cy.injectAxe();
     });
+
 
 
     it('should display login form and validate inputs', () => {
@@ -98,6 +99,30 @@ describe('User Preferences Page', () => {
         cy.contains('Theme settings saved').should('be.visible');
     });
 
+    it('should save privacy settings', () => {
+        cy.login();
+
+        cy.clickTab('Privacy Settings');
+        cy.get('[view_id="privacySettings"]', { timeout: 10000 }).should('be.visible');
+        cy.get('[view_id="visibility"] .webix_custom_checkbox', { timeout: 10000 }).should('be.visible').click();
+        cy.get('[view_id="save_privacy_button"] button', { timeout: 10000 }).click();
+
+        cy.wait('@updatePreferences');
+        cy.contains('Privacy settings saved').should('be.visible');
+    });
+
+
+    it('should be responsive on mobile', () => {
+        cy.viewport('iphone-x');
+        cy.login();
+
+        cy.clickTab('Account Settings');
+        cy.get('[view_id="accountSettings"]').should('be.visible');
+
+        cy.clickTab('Notification Settings');
+        cy.get('[view_id="notificationSettings"]').should('be.visible');
+    });
+
     it('should validate and save account settings', () => {
         cy.login();
 
@@ -140,25 +165,6 @@ describe('User Preferences Page', () => {
     });
 
 
-    it('should save privacy settings', () => {
-        cy.login();
 
-        cy.clickTab('Privacy Settings');
-        cy.get('input[name="visibility"]').check();
-        cy.get('button[value="Save"]').first().click();
 
-        cy.wait('@updatePreferences');
-        cy.contains('Privacy settings saved').should('be.visible');
-    });
-
-    it('should be responsive on mobile', () => {
-        cy.viewport('iphone-x');
-        cy.login();
-
-        cy.clickTab('Account Settings');
-        cy.get('[view_id="accountSettings"]').should('be.visible');
-
-        cy.clickTab('Notification Settings');
-        cy.get('[view_id="notificationSettings"]').should('be.visible');
-    });
 });

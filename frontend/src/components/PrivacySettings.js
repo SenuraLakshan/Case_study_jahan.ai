@@ -13,17 +13,20 @@ export const PrivacySettings = {
         {
             view: "checkbox",
             name: "visibility",
+            id: "visibility",
             label: "Profile Visibility",
             attributes: { "aria-label": "Enable Profile Visibility" }
         },
         {
             view: "checkbox",
+            id: "two_factor_auth",
             name: "two_factor_auth",
             label: "Two-Factor Authentication",
             attributes: { "aria-label": "Enable Two-Factor Authentication" }
         },
         {
             view: "checkbox",
+            id: "data_sharing",
             name: "data_sharing",
             label: "Data Sharing",
             attributes: { "aria-label": "Enable Data Sharing" }
@@ -35,6 +38,7 @@ export const PrivacySettings = {
                 {
                     view: "button",
                     value: "Save",
+                    id: "save_privacy_button",
                     css: "webix_primary",
                     width: 120,
                     click: savePrivacy
