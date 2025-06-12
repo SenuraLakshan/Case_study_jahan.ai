@@ -32,8 +32,8 @@ global.webix = {
         isVisible: jest.fn().mockReturnValue(false)
     })),
     rules: {
-        isNotEmpty: jest.fn((value) => !!value), // Mock as a function that checks if value is non-empty
-        isEmail: jest.fn((value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) // Mock as a basic email regex
+        isNotEmpty: jest.fn((value) => !!value),
+        isEmail: jest.fn((value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
     },
     message: jest.fn().mockReturnValue({
         hide: jest.fn()

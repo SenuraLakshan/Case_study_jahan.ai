@@ -1,6 +1,6 @@
 import { login } from '../api/auth.js';
 
-// Helper function to handle focus navigation with arrow keys (optional)
+// Helper function to handle focus navigation with arrow keys
 function navigateForm(currentElementId, keyCode) {
     const focusOrder = [
         "usernameInput",
@@ -11,9 +11,9 @@ function navigateForm(currentElementId, keyCode) {
     const currentIndex = focusOrder.indexOf(currentElementId);
     let nextIndex;
 
-    if (keyCode === 38) { // Up arrow
+    if (keyCode === 38) {
         nextIndex = (currentIndex - 1 + focusOrder.length) % focusOrder.length;
-    } else if (keyCode === 40) { // Down arrow
+    } else if (keyCode === 40) {
         nextIndex = (currentIndex + 1) % focusOrder.length;
     } else {
         return;
