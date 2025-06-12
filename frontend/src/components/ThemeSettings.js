@@ -1,6 +1,7 @@
 import { getPreferences, updatePreferences } from '../api/preferences.js';
 
 export const ThemeSettings = {
+    id: "themeSettings",
     view: "form",
     scroll: true,
     css: "preference-form",
@@ -12,12 +13,14 @@ export const ThemeSettings = {
         {
             view: "colorpicker",
             name: "primary_color",
+            id: "primary_color",
             label: "Primary Color",
             attributes: { "aria-label": "Select Primary Color" }
         },
         {
             view: "checkbox",
             name: "dark_mode",
+            id: "dark_mode",
             label: "Dark Mode",
             attributes: { "aria-label": "Enable Dark Mode" }
         },
@@ -38,6 +41,7 @@ export const ThemeSettings = {
                 { gravity: 2 },
                 {
                     view: "button",
+                    id: "save_theme_button",
                     value: "Save",
                     css: "webix_primary",
                     width: 120,

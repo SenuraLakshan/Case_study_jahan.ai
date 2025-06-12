@@ -1,6 +1,7 @@
 import { getPreferences, updatePreferences } from '../api/preferences.js';
 
 export const NotificationSettings = {
+    id: "notificationSettings",
     view: "form",
     scroll: true,
     css: "preference-form",
@@ -11,18 +12,23 @@ export const NotificationSettings = {
     elements: [
         {
             view: "checkbox",
+            id: "email_notifications",
             name: "email_notifications",
             label: "Email Notifications",
+            inputName: "email_notifications",
             attributes: { "aria-label": "Enable Email Notifications" }
         },
         {
             view: "checkbox",
+            id: "push_notifications",
             name: "push_notifications",
             label: "Push Notifications",
+            inputName: "push_notifications",
             attributes: { "aria-label": "Enable Push Notifications" }
         },
         {
             view: "select",
+            id: "notification_frequency",
             name: "notification_frequency",
             label: "Notification Frequency",
             options: [

@@ -1,6 +1,7 @@
 import { getPreferences, updatePreferences } from '../api/preferences.js';
 
 export const PrivacySettings = {
+    id: "privacySettings",
     view: "form",
     scroll: true,
     css: "preference-form",

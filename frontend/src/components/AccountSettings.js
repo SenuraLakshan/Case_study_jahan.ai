@@ -68,7 +68,10 @@ export const AccountSettings = {
                     webix.$$("passwordRequirements").setHTML(getPasswordRequirementsHTML({}));
                 }
             },
-            attributes: { "aria-label": "Change Password" }
+            attributes: {
+                "aria-label": "Change Password",
+                "data-cy": "change-password-btn"
+            },
         },
         {
             id: "passwordFieldsLayout",
